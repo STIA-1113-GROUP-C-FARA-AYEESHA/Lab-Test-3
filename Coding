@@ -1,0 +1,55 @@
+package labTest;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+
+public class LabTest3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Scanner sc = new Scanner(System.in);
+		int numWords;
+		int count = 0;
+		
+		System.out.println("Enter the number of words: ");
+		numWords = sc.nextInt();
+		String [] array = new String [numWords];
+		
+		System.out.println("Enter the words(press enter after each word):");
+		
+		for (int i = 0; i < numWords; i++) {
+			array[i] = sc.next();
+		}
+		
+		//for (int i = 0; i < numWords; i++) {
+			countMethod(array, count);
+		//}
+
+	}
+	
+	public static void countMethod(String [] numWords, int x) {
+		
+		Map<String, Integer> count = new HashMap<String, Integer>();
+		
+		for(String word: numWords) {
+			if(count.containsKey(word)) {
+				count.put(word, count.get(word)+1);
+			}
+			else {
+				count.put(word,1);
+			}
+		}
+		
+		Set<String> wordString = count.keySet();
+		
+		for(String word: wordString) {
+			if(count.get(word)>0) {
+				System.out.println(word + " : " + count.get(word));
+			}
+		}
+	}
+
+}
